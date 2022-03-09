@@ -39,10 +39,21 @@ namespace AnimalShelter.Controllers
       return View(thisAnimal);
     }
 
-    public ActionResult SortBy()
+    public ActionResult SortByBreed()
     {
       List<Animal> sortModel = _db.Animals.OrderBy(s => s.Type).ToList();
-      //return RedirectToAction("Index");
+      return View(sortModel);
+    }
+
+    public ActionResult SortByAlphabet()
+    {
+      List<Animal> sortModel = _db.Animals.OrderBy(s => s.Name).ToList();
+      return View(sortModel);
+    }
+
+    public ActionResult SortByDate()
+    {
+      List<Animal> sortModel = _db.Animals.OrderBy(s => s.AdmitDate).ToList();
       return View(sortModel);
     }
   }
